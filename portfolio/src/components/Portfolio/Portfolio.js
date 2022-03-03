@@ -1,7 +1,7 @@
 import './portfolio.scss';
 const Portfolio = () => {
 	return (
-		<div className="portfolio">
+		<div className="portfolio" id="portfolio">
 			sadsdsd	
 		</div>
 	)
