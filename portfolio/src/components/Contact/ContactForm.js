@@ -9,27 +9,27 @@ const initialForm = {
 	comments:"",
 };
 const validationsForm = (form)=>{
-	let errors = {};
-	let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+  let errors = {};
+  let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
   let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
   let regexComments = /^.{1,255}$/;
 	if(!form.name.trim()){
-		errors.name = "El campo Nombre es requerido"
+		errors.name = "The name field is required"
 	}else if(!regexName.test(form.name.trim())){
-		errors.name = "El campo 'Nombre' solo acepta letras y espacios en blanco"
+		errors.name = "The name field only accepts letters and blanks"
 	}
 	if(!form.email.trim()){
-		errors.email = "El campo Email es requerido"
+		errors.email = "The Email field is required"
 	}else if(!regexEmail.test(form.email.trim())){
-		errors.email = "El campo 'Email' es incorrecto"
+		errors.email = "Email field is incorrect"
 	}
 	if(!form.subject.trim()){
-		errors.subject = "El campo Asunto a tratar es requerido"
+		errors.subject = "The subject field is required"
 	}
 	if(!form.comments.trim()){
-		errors.comments = "El campo Comentario es requerido"
+		errors.comments = "The Comment field is required"
 	}else if(!regexComments.test(form.comments.trim())){
-		errors.comments = "El campo 'Comentarios' no debe acceder los 255 caracteres"
+		errors.comments = "The field comments must not access the 255 character"
 	}
 	return errors;
 };
@@ -54,7 +54,7 @@ const ContactForm = () => {
 				<input 
 					type="text" 
 					name="name" 
-					placeholder="Escribe tu nombre" 
+					placeholder="Write your name" 
 					onChange={handleChange} 
 					onBlur={handleBlur}
 					value={form.name} 
@@ -64,7 +64,7 @@ const ContactForm = () => {
 				<input 
 					type="email" 
 					name="email" 
-					placeholder="Escribe tu email" 
+					placeholder="Write your email" 
 					onChange={handleChange} 
 					onBlur={handleBlur}
 					value={form.email} 
@@ -74,7 +74,7 @@ const ContactForm = () => {
 				<input 
 					type="text" 
 					name="subject" 
-					placeholder="Asunto a tratar" 
+					placeholder="Write a subject" 
 					onChange={handleChange} 
 					onBlur={handleBlur}
 					value={form.subject} 
@@ -85,17 +85,17 @@ const ContactForm = () => {
 					name="comments" 
 					cols="50" 
 					rows="5"
-					placeholder="Escribe tus comentario"
+					placeholder="Write your comment"
 					onChange={handleChange} 
 					onBlur={handleBlur}
 					value={form.comments} 
 					required
 				></textarea>
-				<input type="submit" value="Enviar"/>
 				{errors.comments && <p style={styles}>{errors.comments}</p>}
+				<input type="submit" value="Submit"/>
 				{loading && <Loader/>}
 				{response && (
-					<Message msg="Los datos han sido enviados" bgColor="#198754"/>
+					<Message msg="Your message has been sent" bgColor="#198754"/>
 				)}
 
 			</form>

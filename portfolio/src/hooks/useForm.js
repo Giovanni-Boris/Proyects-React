@@ -24,7 +24,7 @@ export const useForm = (initialForm,validateForm) => {
 		setErrors(validateForm(form));
 
 		if(Object.keys(errors).length === 0){
-			alert("Enviando Formualrio");
+			alert("Sending form");
 			setLoading(true);
 			helpHttp()
 				.post("https://formsubmit.co/ajax/bancasi@unsa.edu.pe",{

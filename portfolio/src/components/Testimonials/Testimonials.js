@@ -40,6 +40,7 @@ const Testimonials = () => {
 			<div className="container">
 				{data.map((el)=>(
 					<TestimonialCard
+            key={el.title}
 						img={el.img}
 						icon={el.icon}
 						name={el.name}
