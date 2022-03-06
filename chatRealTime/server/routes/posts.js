@@ -42,7 +42,9 @@ router.delete("/:id", async(req,res)=>{
 		res.status(500).json(err);
 	}
 })
+//like a post
 
+router.put("/:id/like")
 //get a post
 
 
