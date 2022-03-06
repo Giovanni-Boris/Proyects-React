@@ -14,7 +14,7 @@ const PostSchema = mongoose.Schema(
 			type:String
 		},
 		likes:{
-			types:Array,
+			type:Array,
 			default:[]
 		}
 	},
