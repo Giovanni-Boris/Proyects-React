@@ -4,6 +4,6 @@ function App() {
   return (
     <Profiler/>
   );
-}
+} 
 
 export default App;
