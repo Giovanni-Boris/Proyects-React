@@ -1,4 +1,4 @@
-
+import "./sidebarListItem.css";
 const SidebarListItem = ({Icon, options}) => {
 	return (
 		<li className="sidebarListItem">
