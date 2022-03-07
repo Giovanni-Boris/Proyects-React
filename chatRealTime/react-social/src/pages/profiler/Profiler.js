@@ -32,7 +32,7 @@ const Profiler = () => {
 					</div>
 					<div className="profileRightBottom">
 						<Feed/>
-						<Rightbar profiler/>
+						<Rightbar profile/>
 					</div>
 				</div>
 			</div>
