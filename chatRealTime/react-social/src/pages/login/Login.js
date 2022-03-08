@@ -2,6 +2,7 @@ import "./login.css";
 import { loginCall } from "../../apiCalls.js";
 import { useContext,useRef } from "react";
 import AuthContext from "../../context/AuthContext";
+import CircularProgress from "@mui/material/CircularProgress";
 const Login = () => {
 	const email = useRef();
 	const password = useRef();
@@ -27,10 +28,20 @@ const Login = () => {
 					<form className="loginBox" onSubmit={handleSubmit}>
 						<input ref={email} placeholder="Email" type="email" className="loginInput"/>
 						<input ref={password} placeholder="Password" type="password" className="loginInput"/>
-						<button className="loginButton">Log In</button>
+						<button className="loginButton" type="submit" disabled={isFetching}>
+							{isFetching ? (
+								<CircularProgress color="white" size="20px"/>
+							) : (
+								"Log In"
+							)}
+						</button>
 						<span className="loginForgot">Forgot Password</span>
 						<button className="loginRegisterButton">
-							Create  a New Account
+							{isFetching ?(
+								<CircularProgress color="white" size="20px"/>
+							) : (
+								"Create  a New Account"
+							)}
 						</button>
 					</form>
 				</div>
