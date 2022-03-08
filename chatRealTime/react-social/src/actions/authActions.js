@@ -1,13 +1,19 @@
-export const LoginStart = (userCredentials)=>(
-	type: "LOGIN_START",
-);
+export const TYPES = {
+	LOGIN_START:"LOGIN_START",
+	LOGIN_SUCCESS:"LOGIN_SUCCESS",
+	LOGIN_FAILURE:"LOGIN_FAILURE",
+};
+
+export const LoginStart = (userCredentials)=>({
+	type: TYPES.LOGIN_START,
+});
 
 export const LoginSuccess = (user)=>({
-	type: "LOGIN_SUCCESS",
+	type: TYPES.LOGIN_SUCCESS,
 	payload: user,
 });
 
-export const LoginFailure = (user)=>({
-	type: "LOGIN_FAILURE",
+export const LoginFailure = (error)=>({
+	type: TYPES.LOGIN_FAILURE,
 	payload: error,
 });
