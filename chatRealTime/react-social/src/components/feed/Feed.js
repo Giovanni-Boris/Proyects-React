@@ -14,12 +14,13 @@ const Feed = () => {
 		fetchPosts();
 	}, [])
 	return (
+		<d
 		<div className="feed">
 			<div className="feedWrapper">
 				<Share/>
 				{posts.map((el)=>(
 					<Post
-						key={el.id}
+						key={el._id}
 						post={el}
 					/>
 				))}
