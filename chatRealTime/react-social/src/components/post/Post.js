@@ -11,7 +11,7 @@ const Post = ({post}) => {
 	const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 	useEffect(() => {
 		const fetchUser = async ()=>{
-			const res = await axios.get(`users/${post.userId}`)
+			const res = await axios.get(`/users/${post.userId}`)
 			setUser(res.data)
 		}
 		fetchUser();
