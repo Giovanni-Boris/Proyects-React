@@ -4,7 +4,7 @@ const AuthContext = createContext();
 
 const initialAuth = {
 	user: null,
-	isFetching: false,
+	isFetching: false, 
 	error:false,
 };
 
