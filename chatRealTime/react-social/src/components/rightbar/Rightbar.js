@@ -1,11 +1,11 @@
 import "./rightbar.css"; 
 import HomeRightbar from "../homeRightbar/HomeRightbar";
 import ProfileRightbar from "../profileRightbar/ProfileRightbar";
-const Rightbar = ({profile}) => {
+const Rightbar = ({user}) => {
 	return (
 		<div className="rightbar">
 			<div className="rightbarWrapper">
-				{profile ? <ProfileRightbar/> : <HomeRightbar/>}
+				{user ? <ProfileRightbar user={user}/> : <HomeRightbar/>}
 			</div>		
 		</div>
 	)

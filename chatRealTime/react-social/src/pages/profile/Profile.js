@@ -5,18 +5,20 @@ import Rightbar  from "../../components/rightbar/Rightbar";
 import {useState,useEffect} from "react";
 import axios from "axios";
 import "./profile.css";
-
+import { useParams } from "react-router-dom";
 const Profile = () => {
 	const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-	const [user, setUser] = useState({})
+	const [user, setUser] = useState({});
+	const {username}= useParams();
+	//console.log(params);
 	useEffect(() => {
 		const fetchUser = async ()=>{
-			console.log("/users?username=lucas");
-			const res = await axios.get(`/users?username=lucas`)
+			console.log("/users?username="+username);
+			const res = await axios.get(`/users?username=${username}`)
 			setUser(res.data)
 		}
 		fetchUser();
-	}, [])
+	}, [username]);
 	return (
 		<>
 			<Navbar/>
@@ -27,12 +29,12 @@ const Profile = () => {
 						<div className="profileCover">
 							<img 
 								className="profileCoverImg" 
-								src={PF+"post/3.jpeg"} 
+								src={user.coverImg || PF+"person/noCover.png"} 
 								alt=""
 							/>
 							<img 
 								className="profileUserImg" 
-								src={PF+"person/7.jpeg"}
+								src={user.profilePicture || PF+"person/noAvatar.png"}
 								alt=""
 							/>
 						</div>
@@ -43,8 +45,8 @@ const Profile = () => {
 		
 					</div>
 					<div className="profileRightBottom">
-						<Feed username="lucas"/>
-						<Rightbar profile/>
+						<Feed username={username}/>
+						<Rightbar user={user}/>
 					</div>
 				</div>
 			</div>

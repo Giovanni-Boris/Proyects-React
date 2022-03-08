@@ -29,7 +29,7 @@ const Post = ({post}) => {
 		setLike(isLiked ? like-1: like+1);
 		setIsLiked(!isLiked);
 	}
-	console.log(post.createdAt);
+	//console.log(post.createdAt);
 	return (
 		<div className="post">
 			<div className="postWrapper">
