@@ -10,7 +10,7 @@ const initialAuth = {
 
 
 const AuthProvider = ({children}) => {
-	const [state, dispatch] = useReducer(reducer, initialAuth)
+	const [state, dispatch] = useReducer(null, initialAuth)
 	const data = {
 		user: state.user,
 		isFetching: state.isFetching,
