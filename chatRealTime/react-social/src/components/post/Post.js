@@ -1,18 +1,26 @@
 import "./post.css";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Users } from "../../dummyData";
-import{ useState,useMemo} from "react";
+import{ useState,useEffect } from "react";
+import axios from 'axios';
+
 const Post = ({post}) => {
 	const [like, setLike] = useState(post.like);
 	const [isLiked, setIsLiked] = useState(false);
+	const [user, setUser] = useState({})
 	const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-	//console.log(PF)
+	useEffect(() => {
+		const fetchUser = async ()=>{
+			const res = await axios.get(`users/${post.userId}`)
+			setUser(res.data)
+		}
+		fetchUser();
+	}, [])
 	//usar use memo
-	const currentUser = useMemo(() => {
+	/*const currentUser = useMemo(() => {
 		console.log("rendering");
 		let current = Users.filter(u=>u.id===post.userId)[0];
 		return current;
-	},[post.userId])
+	},[post.userId])*/
 
 
 	//console.log("new rendering")
@@ -28,11 +36,11 @@ const Post = ({post}) => {
 					<div className="postTopLeft">
 						<img 
 							className="postProfilerImg" 
-							src={PF+currentUser.profilePicture}
+							src={user.profilePicture}
 							alt=""
 						/>
 						<span className="postUserName">
-							{currentUser.username}
+							{user.username}
 						</span>
 						<span className="postDate">{post.date}</span>
 					</div>
