@@ -3,7 +3,6 @@ import axios from "axios"
 import {TYPES} from "./actions/authActions";
 
 export const loginCall = async (userCredentials, dispatch)=>{
-	console.log("aqui estoy");
 	dispatch({ type: TYPES.LOGIN_START });
 	try{
 		const res = await axios.post("auth/login",userCredentials);
