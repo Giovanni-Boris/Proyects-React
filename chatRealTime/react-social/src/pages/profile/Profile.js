@@ -11,11 +11,12 @@ const Profile = () => {
 	const [user, setUser] = useState({})
 	useEffect(() => {
 		const fetchUser = async ()=>{
-			const res = await axios.get(`/users/${post.userId}`)
+			console.log("/users?username=lucas");
+			const res = await axios.get(`/users?username=lucas`)
 			setUser(res.data)
 		}
 		fetchUser();
-	}, [post.userId])
+	}, [])
 	return (
 		<>
 			<Navbar/>
@@ -36,8 +37,8 @@ const Profile = () => {
 							/>
 						</div>
 						<div className="profileInfo">
-							<h4 className="profileInfoName">Boris Giovanni</h4>
-							<span className="profileInfoDesc">Hello my friends!</span>
+							<h4 className="profileInfoName">{user.username}</h4>
+							<span className="profileInfoDesc">{user.desc}</span>
 						</div>
 		
 					</div>
