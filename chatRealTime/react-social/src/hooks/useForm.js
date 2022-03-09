@@ -14,7 +14,6 @@ export const useForm = (initialForm,validateForm)=>{
 		})
 	};
 	const handleBlur = (e)=>{
-		console.log("here");
 		handleChange(e);
 		setErrors(validateForm(form));
 	};
@@ -26,10 +25,11 @@ export const useForm = (initialForm,validateForm)=>{
 			const user = {
 				username : form.username,
 				email : form.email,
-				Password: form.password,
+				password: form.password
 			};
 			try{
-				await axios.post("/auth/register",user);
+				console.log("making post")
+				await axios.post("http://localhost:8800/api/auth/register",user);
 				navigate("/login")
 
 			}catch(err){
