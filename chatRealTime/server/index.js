@@ -4,6 +4,9 @@ const dotenv = require("dotenv");
 const helmet = require("helmet"); 
 const morgan = require("morgan");
 const multer = require("multer");
+const path = require("path");
+
+
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
@@ -23,15 +26,17 @@ const  uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@clu
 const option = { useNewUrlParser: true, useUnifiedTopology: true}
 
 //console.log(process.env.USER_NAME,process.env.DBNAME);
+
+app.use("/images", express.static(path.join(__dirname,"public/images")));
+
 mongoose.connect(uri,option)
 	.then(()=> console.log('Base de datos conectada'))
-	.catch(e => console.log('Error db: ', e))
+	.catch(error => console.log('Error db: ', error))
 
 //middleware
 app.use(express.json())
 app.use(helmet());
 app.use(morgan("common"));
-mo
 const storage = multer.diskStorage({
 	destination: (req, file, cb) =>{
 		cb(null, "public/images")
