@@ -20,6 +20,32 @@ export function authReducer(state, action){
 				isFetching: false,
 				error: action.payload,
 			}
+		case TYPES.FOLLOW:
+			return{
+				...state,
+				user: {
+					...state.user,
+					followings: [...state.user.followings,action.payload],
+				},
+			}
+		case TYPES.FOLLOW:
+			return{
+				...state,
+				user: {
+					...state.user,
+					followings: [...state.user.followings,action.payload],
+				},
+			}
+		case TYPES.UNFOLLOW:
+			return{
+				...state,
+				user: {
+					...state.user,
+					followings: state.user.followings.filter(
+						(following)=>following!==action.payload
+					),
+				},
+			}
 		default:
 			return state;
 	}

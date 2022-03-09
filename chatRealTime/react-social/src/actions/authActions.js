@@ -2,6 +2,8 @@ export const TYPES = {
 	LOGIN_START:"LOGIN_START",
 	LOGIN_SUCCESS:"LOGIN_SUCCESS",
 	LOGIN_FAILURE:"LOGIN_FAILURE",
+	FOLLOW:"FOLLOW",
+	UNFOLLOW:"UNFOLLOW",
 };
 
 export const LoginStart = (userCredentials)=>({
@@ -16,4 +18,14 @@ export const LoginSuccess = (user)=>({
 export const LoginFailure = (error)=>({
 	type: TYPES.LOGIN_FAILURE,
 	payload: error,
+});
+
+export const Follow = (userId)=>({
+	type: TYPES.FOLLOW,
+	payload: userId,
+});
+
+export const Unfollow = (userId)=>({
+	type: TYPES.FOLLOW,
+	payload: userId,
 });
