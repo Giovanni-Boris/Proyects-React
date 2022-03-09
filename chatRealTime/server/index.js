@@ -1,5 +1,4 @@
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const helmet = require("helmet"); 
@@ -9,7 +8,16 @@ const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 
 dotenv.config();
+const app = express();
 
+// cors 
+const cors = require('cors');
+
+var corsOption = {
+	origin: '#',
+	optionsSuccessStatus:200
+}
+app.use(cors({corsOption}))
 const  uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster0.gyngb.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 const option = { useNewUrlParser: true, useUnifiedTopology: true}
 
