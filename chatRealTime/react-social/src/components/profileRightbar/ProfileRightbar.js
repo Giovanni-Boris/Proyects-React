@@ -31,26 +31,7 @@ const ProfileRightbar = ({user}) => {
 					<img className="rightbarFollowingImg" src={PF+"person/1.jpeg"} alt=""/>
 					<span className="rightbarFollowingName">John Carter</span>
 				</div>	
-				<div className="rightbarFollowing">
-					<img className="rightbarFollowingImg" src={PF+"person/2.jpeg"} alt=""/>
-					<span className="rightbarFollowingName">John Carter</span>
-				</div>
-				<div className="rightbarFollowing">
-					<img className="rightbarFollowingImg" src={PF+"person/3.jpeg"} alt=""/>
-					<span className="rightbarFollowingName">John Carter</span>
-				</div>
-				<div className="rightbarFollowing">
-					<img className="rightbarFollowingImg" src={PF+"person/4.jpeg"} alt=""/>
-					<span className="rightbarFollowingName">John Carter</span>
-				</div>
-				<div className="rightbarFollowing">
-					<img className="rightbarFollowingImg" src={PF+"person/5.jpeg"} alt=""/>
-					<span className="rightbarFollowingName">John Carter</span>
-				</div>
-				<div className="rightbarFollowing">
-					<img className="rightbarFollowingImg" src={PF+"person/6.jpeg"} alt=""/>
-					<span className="rightbarFollowingName">John Carter</span>
-				</div>
+
 			</div>
 		</>
 	)
