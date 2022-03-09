@@ -3,9 +3,19 @@ import {authReducer} from "../reducers/authReducer";
 const AuthContext = createContext();
 
 const initialAuth = {
-	user: null,
-	isFetching: false, 
-	error:false,
+	user:{
+		_id:"62247bb17bd40d303d6da510",	
+		username:"boris",
+		email:"boris@gmail.com",
+		password:"123456",
+		profilePicture:"person/1.jpeg",
+		coverPicture:"",
+		followers:[],
+		isAdmin:false,
+		followings:[],
+		isFetching: false, 
+		error:false,
+	}
 };
 
 
