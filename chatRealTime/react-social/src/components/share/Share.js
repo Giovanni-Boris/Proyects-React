@@ -13,17 +13,25 @@ const Share = () => {
 	const desc = useRef();
 	const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 	const [file, setFile] = useState(null);
+	//console.log(file)
 	const handleSubmit = async(e)=> {
 		e.preventDefault();
 		const newPost = {
 			userId: user._id,
 			desc: desc.current.value
 		}
+
 		if(file){
 			const data = new FormData();
 			const fileName =  Date.now() + file.name;
-			data.append("file", file);
-			data.append("name", fileName);
+			console.log(fileName)
+			data.append("file", file, fileName);
+			try{
+				await axios.post("/upload",data)
+				//window.location.reload();
+			} catch(err){
+				console.log(err);
+			}
 		}
 		try{
 			await axios.post("/posts",newPost);
@@ -52,7 +60,7 @@ const Share = () => {
 				<hr className="shareHr"/>
 				<form className="shareBottom" onSubmit={handleSubmit}>
 					 <div className="shareOptions">
-					 	<div className="shareOption">
+					 	<label htmlFor="file" className="shareOption">
 					 		<PermMediaIcon htmlColor="tomato" className="shareIcon"/>
 					 		<span className="shareOptionText">Photo or Video</span>
 					 		<input
@@ -62,7 +70,7 @@ const Share = () => {
 					 			accept=".png,.jpeg,.jpg"
 					 			onChange={(e)=>setFile(e.target.files[0])}
 					 		/>
-					 	</div>
+					 	</label>
 					 	<div className="shareOption">
 					 		<LabelIcon htmlColor="blue" className="shareIcon"/>
 					 		<span className="shareOptionText">Tag</span>
