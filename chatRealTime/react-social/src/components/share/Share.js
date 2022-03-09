@@ -26,9 +26,10 @@ const Share = () => {
 			const fileName =  Date.now() + file.name;
 			console.log(fileName)
 			data.append("file", file, fileName);
+			newPost.img = fileName;
 			try{
 				await axios.post("/upload",data)
-				//window.location.reload();
+				window.location.reload();
 			} catch(err){
 				console.log(err);
 			}
