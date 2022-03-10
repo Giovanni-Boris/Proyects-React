@@ -3,7 +3,24 @@ import Navbar from "../../components/navbar/Navbar";
 import Conversation from "../../components/conversations/Conversation";
 import Message from "../../components/message/Message";
 import ChatOnline from "../../components/chatOnline/ChatOnline";
+import axios from "axios";
+import AuthContext from "../../context/AuthContext";
+import {useState,useEffect,useContext} from "react";
 const Messenger = () => {
+	const [conversations, setConversations] = useState([])
+	const {user} = useContext(AuthContext);
+	useEffect(() => {
+		const getConversation = async() => {
+			try{
+				const res = await axios.get("/conversations/"+user._id);
+				setConversations(res.data);
+			} catch(err){
+				console.log(err);
+			}	
+		}
+		getConversation();
+	}, [user._id])
+	//console.log("mis conversations",conversations);
 	return (
 		<>
 		<Navbar/>
@@ -11,10 +28,9 @@ const Messenger = () => {
 				<div className="chatMenu">
 					<div className="chatMenuWrapper">
 						<input placeholder="Search for friends" className="chatMenuInput"/>
-						<Conversation/>
-						<Conversation/>
-						<Conversation/>
-						<Conversation/>
+						{conversations.map((el,index) => (
+							<Conversation key={index} conversation={el} currentUser={user}/>
+						))}
 					</div>
 				</div>
 				<div className="chatBox">
