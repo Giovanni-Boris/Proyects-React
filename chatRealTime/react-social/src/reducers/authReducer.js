@@ -28,14 +28,6 @@ export function authReducer(state, action){
 					followings: [...state.user.followings,action.payload],
 				},
 			}
-		case TYPES.FOLLOW:
-			return{
-				...state,
-				user: {
-					...state.user,
-					followings: [...state.user.followings,action.payload],
-				},
-			}
 		case TYPES.UNFOLLOW:
 			return{
 				...state,

@@ -30,7 +30,7 @@ const ProfileRightbar = ({user}) => {
 			}
 		}
 	  getFriends();
-	}, [user._id])
+	}, [user])
 	const handleClick = async () =>{
 		try{
 			if(followed){
