@@ -1,6 +1,7 @@
 import "./messenger.css"
 import Navbar from "../../components/navbar/Navbar";
 import Conversation from "../../components/conversations/Conversation";
+import Message from "../../components/message/Message"
 const Messenger = () => {
 	return (
 		<>
@@ -18,10 +19,13 @@ const Messenger = () => {
 				<div className="chatBox">
 					<div className="chatBoxWrapper">
 						<div className="chatBoxTop">
-							
+							<Message/>
+							<Message own={true}/>
+							<Message/>
 						</div>
 						<div className="chatBoxBottom">
-							
+							<textarea className="chatMenuInput" placeholder="write something..."></textarea>
+							<button className="chatSubmitButton">Send</button>
 						</div>
 					</div>
 				</div>
