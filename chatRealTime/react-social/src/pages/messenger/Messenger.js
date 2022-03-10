@@ -22,9 +22,15 @@ const Messenger = () => {
 							<Message/>
 							<Message own={true}/>
 							<Message/>
+							<Message/>
+							<Message/>
+							<Message/>
+							<Message/>
+							<Message/>
+							<Message/>
 						</div>
 						<div className="chatBoxBottom">
-							<textarea className="chatMenuInput" placeholder="write something..."></textarea>
+							<textarea className="chatMessageInput" placeholder="write something..."></textarea>
 							<button className="chatSubmitButton">Send</button>
 						</div>
 					</div>
