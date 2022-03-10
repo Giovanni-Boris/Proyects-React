@@ -7,7 +7,9 @@ import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import {useState,useEffect,useContext} from "react";
 const Messenger = () => {
-	const [conversations, setConversations] = useState([])
+	const [conversations, setConversations] = useState([]);
+	const [currentChat, setCurrentChat] = useState(null);
+	const [messages, setMessages] = useState([]);
 	const {user} = useContext(AuthContext);
 	useEffect(() => {
 		const getConversation = async() => {
@@ -21,6 +23,19 @@ const Messenger = () => {
 		getConversation();
 	}, [user._id])
 	//console.log("mis conversations",conversations);
+	useEffect(() => {
+		if(!currentChat)return;
+		const getMessages = async ()=>{
+			try{	
+				const res = await axios.get("/messages/"+currentChat._id)
+				setMessages(res.data)
+			} catch(err){
+				console.log(err)
+			}
+		}
+		getMessages();
+	}, [currentChat]);
+	console.log(messages)
 	return (
 		<>
 		<Navbar/>
@@ -29,27 +44,29 @@ const Messenger = () => {
 					<div className="chatMenuWrapper">
 						<input placeholder="Search for friends" className="chatMenuInput"/>
 						{conversations.map((el,index) => (
-							<Conversation key={index} conversation={el} currentUser={user}/>
+							<div key={index} onClick={() => setCurrentChat(el)}>
+								<Conversation conversation={el} currentUser={user}/>
+							</div>
 						))}
 					</div>
 				</div>
 				<div className="chatBox">
 					<div className="chatBoxWrapper">
-						<div className="chatBoxTop">
-							<Message/>
-							<Message own={true}/>
-							<Message/>
-							<Message/>
-							<Message/>
-							<Message/>
-							<Message/>
-							<Message/>
-							<Message/>
-						</div>
-						<div className="chatBoxBottom">
-							<textarea className="chatMessageInput" placeholder="write something..."></textarea>
-							<button className="chatSubmitButton">Send</button>
-						</div>
+						{currentChat ?(
+							<> 
+								<div className="chatBoxTop">
+									{messages.map((m,index)=>(
+										<Message key={index} message={m} own={m.sender === user._id}/>
+									))}
+								</div>
+								<div className="chatBoxBottom">
+									<textarea className="chatMessageInput" placeholder="write something..."></textarea>
+									<button className="chatSubmitButton">Send</button>
+								</div>
+							</>
+						):( 
+							<span className="noConversationText">Open a conversation to start</span> 
+						)}
 					</div>
 				</div>
 				<div className="chatOnline">
