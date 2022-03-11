@@ -5,13 +5,14 @@ import Message from "../../components/message/Message";
 import ChatOnline from "../../components/chatOnline/ChatOnline";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
-import {useState,useEffect,useContext} from "react";
+import {useState,useEffect,useContext,useRef} from "react";
 const Messenger = () => {
 	const [conversations, setConversations] = useState([]);
 	const [currentChat, setCurrentChat] = useState(null);
 	const [messages, setMessages] = useState([]);
 	const [newMessage, setNewMessage] = useState("");
 	const {user} = useContext(AuthContext);
+	const scrollRef = useRef()
 	useEffect(() => {
 		const getConversation = async() => {
 			try{
@@ -51,7 +52,10 @@ const Messenger = () => {
 		}catch(err){
 			console.log(err)
 		}
-	}
+	};
+	useEffect(() => {
+		scrollRef.current?.scrollIntoView({ behavior:"smooth" })
+	}, [messages])
 	return (
 		<>
 		<Navbar/>
@@ -72,7 +76,9 @@ const Messenger = () => {
 							<> 
 								<div className="chatBoxTop">
 									{messages.map((m,index)=>(
-										<Message key={index} message={m} own={m.sender === user._id}/>
+										<div ref={scrollRef} key={index}>
+											<Message message={m} own={m.sender === user._id}/>
+										</div>
 									))}
 								</div>
 								<div className="chatBoxBottom">
