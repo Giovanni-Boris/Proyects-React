@@ -22,7 +22,9 @@ const Conversation = ({conversation, currentUser}) => {
 		<div className="conversation">
 			<img 
 				className="conversationImg" 
-				src={user?.profilePicture?user.profilePicture:PF+"person/noAvatar.png"}
+				src={user?.profilePicture
+					? PF + user.profilePicture
+					: PF + "person/noAvatar.png"}
 				alt=""
 			/>
 			<span className="conversationName">{user?.username}</span>
