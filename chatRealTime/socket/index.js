@@ -34,7 +34,7 @@ io.on("connection",(socket)=>{
 		console.log(senderId,receiverId,text);
 		const user = getUser(receiverId);
 		console.log(user);
-		io.to(user.socketId).emit("getMessage", {
+		user &&	io.to(user.socketId).emit("getMessage", {
 			senderId,
 			text,
 		});
@@ -43,7 +43,7 @@ io.on("connection",(socket)=>{
 	//when disconnect
 	socket.on("disconnect", ()=>{
 		console.log("a user disconnect");
-		removeUser(socket.Id);
+		removeUser(socket.id);
 		io.emit("getUsers", users)
 	})
 })

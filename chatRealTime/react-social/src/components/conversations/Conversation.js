@@ -5,7 +5,7 @@ const Conversation = ({conversation, currentUser}) => {
 	const [user, setUser] = useState(null);
 	const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 	useEffect(() => {
-		console.log("hola",conversation);
+		//console.log("hola",conversation);
 		const friendId = conversation.members.find((el)=>el !== currentUser._id);
 		const getUser = async() =>{
 			try{
