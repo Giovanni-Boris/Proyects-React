@@ -1,4 +1,4 @@
-.nav{
+.top{
 	width: 100%;
 	height: 50px;
 	background-color: #fff;
@@ -9,32 +9,32 @@
 	font-family: 'Josefin-Sans', sans-serif;
 }
 
-.navLeft,.navRight{
+.topLeft,.topRight{
 	flex: 3;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.navCenter{
+.topCenter{
 	flex: 6;
 }
 
-.navIcon{
+.topIcon{
 	font-size: 20px;
 	margin-right: 10px;
 	color: #444;
 	cursor: pointer;
 }
 
-.navImg{
+.topImg{
 	width: 40px; 
 	height: 40px;
 	border-radius: 50%;
 	object-fit: cover;               
 }
 
-.navList{
+.topList{
 	display: flex;
 	justify-content: center;
 	margin: 0;
@@ -42,14 +42,14 @@
 	list-style: none;
 }
 
-.navListItem{
+.topListItem{
 	margin-right: 20px;
 	font-size: 18px;
 	font-weight: 300;
 	cursor: pointer;
 }
 
-.navSearchIcon{
+.topSearchIcon{
 	font-size: 18px;
 	color:  #666;
 	cursor: pointer;
