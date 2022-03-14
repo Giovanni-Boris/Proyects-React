@@ -36,7 +36,7 @@
 }
 
 .settingsPP > img {
-	width: 70%;
+	width: 70px;
 	height: 70px;
 	border-radius: 20px;
 	object-fit: cover;
@@ -45,6 +45,7 @@
 .settingsPPIcon{
 	width: 25px;
 	height: 25px;
+	padding: 5px;
 	border-radius: 50%;
 	background-color: lightcoral;
 	color: #fff;
@@ -55,7 +56,8 @@
 	cursor: pointer; 
 }
 
-.settingsForm > input{
+
+.settingsForm > label{
 	font-size: 20px;
 	margin-top: 20px;
 }
