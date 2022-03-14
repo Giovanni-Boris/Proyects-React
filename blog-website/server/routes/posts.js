@@ -63,12 +63,12 @@ router.get("/:id", async(req,res)=>{
 
 //GET ALL POST
 router.get("/", async(req,res)=>{
-	const username = req.query.username;
+	const user = req.query.username;
 	const catName = req.query.cat;
 	try{
 		let posts;
-		if(username){
-			posts = await Post.find({username})
+		if(user){
+			posts = await Post.find({user})
 		} else if(catName){
 			posts = await Post.find({categories:{
 				$in:[catName]
