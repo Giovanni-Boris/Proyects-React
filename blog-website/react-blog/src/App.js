@@ -6,8 +6,10 @@ import Write from "./pages/write/Write"
 import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom'
+import { useContext } from "react";
+import AuthContext from "./context/AuthContext"
 function App() {
-  const user = false;
+  const {user} = useContext(AuthContext);
   return (
     <Router>
       <Topbar/>
