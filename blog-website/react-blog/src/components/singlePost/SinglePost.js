@@ -6,7 +6,8 @@ import axios from 'axios';
 const SinglePost = () => {
   const [post, setPost] = useState({})
   let {postId} = useParams();
-  console.log(postId);
+  //console.log(postId);
+  const PF = "http://localhost:5000/images/"
 
   useEffect(() => {
     const getPost = async () => {
@@ -21,7 +22,7 @@ const SinglePost = () => {
         {post.photo &&
   				<img
             className="singlePostImg"
-            src={post.photo}
+            src={PF + post.photo}
             alt=""
           />
         }
