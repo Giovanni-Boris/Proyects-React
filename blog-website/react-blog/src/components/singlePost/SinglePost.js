@@ -1,6 +1,7 @@
 import "./singlePost.css"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 const SinglePost = () => {
   const [post, setPost] = useState({})
@@ -31,9 +32,12 @@ const SinglePost = () => {
             <i className="singlePostIcon far fa-trash-alt"></i>
           </div>
         </h1>
-        <div className="singlepostInfo">
+        <div className="singlePostInfo">
         	<span className="singlePostAuthor">
-        		Author: <b>{post.username}</b>
+        		Author: 
+            <Link to={`/?username=${post.username}`} className="link">
+              <b>{post.username}</b>
+            </Link>
         	</span>
         	<span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
         </div>
