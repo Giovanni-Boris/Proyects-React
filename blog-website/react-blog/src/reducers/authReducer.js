@@ -17,6 +17,23 @@ export function authReducer(state,action){
 		case TYPES.LOGIN_FAILURE:
 			return{
 				user:null,
+				isFetching:true,
+				error:true,
+			};
+		case TYPES.UPDATE_START:
+			return{
+				...state,
+				isFetching:true
+			};
+		case TYPES.UPDATE_SUCCESS:
+			return{
+				user:action.payload,
+				isFetching:false,
+				error:false,
+			};
+		case TYPES.UPDATE_FAILURE:
+			return{
+				user:state.user,
 				isFetching:false,
 				error:true,
 			};

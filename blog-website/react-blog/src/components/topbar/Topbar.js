@@ -5,7 +5,7 @@ import AuthContext from "../../context/AuthContext";
 import {TYPES} from "../../actions/authActions";
 const Topbar = () => {
 	const { user, dispatch } = useContext(AuthContext);
-	//const PF = "http://localhost:5000/images/"
+	const PF = "http://localhost:5000/images/"
 	const handleLogout = () =>{
 		dispatch({ type: TYPES.LOGOUT});
 	}
@@ -42,7 +42,7 @@ const Topbar = () => {
 						<Link to="/settings">
 							<img
 					 			className="topImg"
-								src={user.profileP}
+								src={PF + user.profileP}
 	         		  alt=""
 							/>
 						</Link>

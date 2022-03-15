@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar"
 import AuthContext from "../../context/AuthContext"
 import axios from "axios";
 import {useState,useContext} from "react";
-
+import {TYPES} from "../../actions/authActions";
 const initialForm = {
 	username:"" ,
 	email:"",
@@ -12,8 +12,10 @@ const initialForm = {
 };
 const Settings = () => {
 	const [form, setForm] = useState(initialForm);
-	const {user} = useContext(AuthContext)
+	const {user, dispatch} = useContext(AuthContext)
 	const [success, setSuccess] = useState(false);
+	const PF = "http://localhost:5000/images/";
+
 	const handleChange = (e,file) => {
 		const {name,value} = e.target;
 		setForm({
@@ -23,6 +25,7 @@ const Settings = () => {
 	}
 	const handleSubmit = async(e)=>{
 		e.preventDefault();
+		dispatch({ type:TYPES.UPDATE_START });
 		const updatedUser = {
 			userId: user._id,
 			...form,
@@ -43,9 +46,12 @@ const Settings = () => {
 		//console.log(newPost);
 
 		try{
-			await axios.put("/users/"+user._id,updatedUser)
+			const res = await axios.put("/users/" + user._id,updatedUser)
 			setSuccess(true);
-		}catch(err){}
+			dispatch({ type:TYPES.UPDATE_SUCCESS, payload: res.data })
+		}catch(err){
+			dispatch({ type: TYPES.UPDATE_FAILURE })
+		}
 	}
 	return (
 		<div className="settings">
@@ -58,7 +64,7 @@ const Settings = () => {
 					<label>Profile Picture</label>
 					<div className="settingsPP">
 						<img
-            	src={form.file ? URL.createObjectURL(form.file): user.profileP}
+            	src={form.file ? URL.createObjectURL(form.file): PF + user.profileP}
               alt=""
             />
             <label htmlFor="fileInput">
@@ -66,6 +72,7 @@ const Settings = () => {
             </label>
             <input 
             	className="fileInput" 
+            	id="fileInput"
             	type="file" 
             	name="file"
             	style={{display:"none"}}
