@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 const AuthProvider = ({children}) => {
 	const [state, dispatch] = useReducer(authReducer, INITIAL_STATE)
 	useEffect(() => {
-		console.log("hola")
+		//console.log("hola")
 		localStorage.setItem("user",JSON.stringify(state.user));
 	}, [state.user])
 	const data = {

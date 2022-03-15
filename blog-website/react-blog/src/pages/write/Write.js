@@ -39,9 +39,9 @@ const Write = () => {
 				await axios.post("/upload",data)
 			}catch(err){}
 		}
-		console.log(newPost);
+		//console.log(newPost);
 		delete newPost.file;
-		console.log(newPost);
+		//console.log(newPost);
 		try{
 			const res = await axios.post("/posts",newPost)
 			navigate("/post/" + res.data._id);

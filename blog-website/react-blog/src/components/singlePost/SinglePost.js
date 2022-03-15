@@ -1,13 +1,17 @@
 import "./singlePost.css"
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import AuthContext from "../../context/AuthContext";
+
 const SinglePost = () => {
   const [post, setPost] = useState({})
   let {postId} = useParams();
   //console.log(postId);
   const PF = "http://localhost:5000/images/"
+  const {user} = useContext(AuthContext);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const getPost = async () => {
@@ -15,7 +19,15 @@ const SinglePost = () => {
       setPost(res.data);
     }
     getPost()
-  }, [postId])
+  }, [postId]);
+  const handleDelete = async() => {
+    try{
+      await axios.delete(`/posts/${post._id}`,{
+        data: { username:user.username }
+      });
+      navigate("/");
+    }catch(err){}
+  }
 	return (
 		<div className="singlePost">
 			<div className="singlePostWrapper">
@@ -28,10 +40,12 @@ const SinglePost = () => {
         }
         <h1 className="singlePostTitle">
           {post.title}
-          <div className="singlePostEdit">
-            <i className="singlePostIcon far fa-edit"></i>
-            <i className="singlePostIcon far fa-trash-alt"></i>
-          </div>
+          {post.username === user?.username &&(
+            <div className="singlePostEdit">
+              <i className="singlePostIcon far fa-edit"></i>
+              <i className="singlePostIcon far fa-trash-alt" onClick={handleDelete}></i>
+            </div>
+          )}
         </h1>
         <div className="singlePostInfo">
         	<span className="singlePostAuthor">
