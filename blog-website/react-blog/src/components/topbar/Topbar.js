@@ -5,6 +5,7 @@ import AuthContext from "../../context/AuthContext";
 import {TYPES} from "../../actions/authActions";
 const Topbar = () => {
 	const { user, dispatch } = useContext(AuthContext);
+	//const PF = "http://localhost:5000/images/"
 	const handleLogout = () =>{
 		dispatch({ type: TYPES.LOGOUT});
 	}
@@ -38,11 +39,13 @@ const Topbar = () => {
 			<div className="topRight">
 				{
 					user ? (
-						<img
-				 			className="topImg"
-							src={user.profilePic}
-         		  alt=""
-						/>
+						<Link to="/settings">
+							<img
+					 			className="topImg"
+								src={user.profileP}
+	         		  alt=""
+							/>
+						</Link>
 					) : (
 						<ul className="topList">
 							<li className="topListItem">
