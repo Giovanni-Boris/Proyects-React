@@ -1,8 +1,10 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+import React from 'react';
+import Navbar from '../components/Navbar';
+import Announcement from '../components/Announcement';
 const Home = () => {
 	return (
-		<div>
+		<div>	
+			<Announcement/>
 			<Navbar/>
 		</div>
 	)
