@@ -37,7 +37,7 @@ const Input = styled.input`
 	margin: 10px 0;
 	padding: 10px;
 	border: none;
-	border-bottom: 1px solid #000;
+	border-bottom: 0.5px solid #a1a1a1;
  `; 
 
 
