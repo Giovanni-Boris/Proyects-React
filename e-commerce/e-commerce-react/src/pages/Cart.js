@@ -147,10 +147,11 @@ const SummaryItemPrice = styled.span``;
 
 const Button = styled.button`
 	width: 100%;
-	position: 10px;
+	padding: 10px;
 	background-color: #000;
-	color: #000;
+	color: #fff;
 	font-weight: 600;
+	border: none;
  `;
 
 const Cart = () => {
