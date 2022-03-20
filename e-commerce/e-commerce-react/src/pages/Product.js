@@ -9,7 +9,8 @@ import {mobile} from "../responsive";
 import {useParams} from "react-router-dom";
 import {useRequest} from "../hooks/useRequest";
 import  { useState } from 'react'
-
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 const Container = styled.div`
 	
  `;
@@ -127,6 +128,7 @@ const Product = () => {
 	const [quantity, setQuantity] = useState(1);
 	const [color, setColor] = useState(null);
 	const [size, setSize] = useState(null);
+	const dispatch = useDispatch()
 	const handleQuantity =  (type) =>{
 		if(type === "dec"){
 			quantity>1 && setQuantity(quantity - 1);
@@ -135,7 +137,7 @@ const Product = () => {
 		}
 	}
 	const handleClick = () => {
-		//update cart
+		dispatch(addProduct({ ...product, quantity, color, size }));
 	}
 	return (
 		<Container>
