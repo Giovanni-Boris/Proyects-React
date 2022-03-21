@@ -186,7 +186,7 @@ const Cart = () => {
           amount: 500,
         });
         navigate("/success",{ data: res.data });
-      } catch(err) {console.log(err)}
+      } catch {}
     };
     stripeToken && makeRequest();
   }, [stripeToken, cart.total,navigate]);
