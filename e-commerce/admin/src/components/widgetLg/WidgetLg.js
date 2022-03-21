@@ -1,4 +1,4 @@
-import "./widgetLg.css"
+ import "./widgetLg.css"
 const Button = ({type}) => {
 	return <button className={"widgetLgButton "+type}>{type}</button>
 }
