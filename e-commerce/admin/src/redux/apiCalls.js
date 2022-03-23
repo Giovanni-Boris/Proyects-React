@@ -1,4 +1,12 @@
 import { loginFailure, loginStart, loginSuccess } from "./userRedux";
+import { 
+	getProductFailure, 
+	getProductStart, 
+	getProductSuccess,
+	deleteProductFailure,
+  	deleteProductStart,
+  	deleteProductSuccess,
+} from "./productRedux";
 import { publicRequest } from "../requestMethods";
 
 export const login = async (dispatch, user)=>{
@@ -10,3 +18,24 @@ export const login = async (dispatch, user)=>{
 		dispatch(loginFailure());
 	}
 }
+
+export const getProducts = async (dispatch)=>{
+	dispatch(getProductStart());
+	try{
+		const res = await publicRequest.get("/products");
+		dispatch(getProductSuccess(res.data));
+	}catch(err){
+		dispatch(getProductFailure());
+	}
+}
+
+export const deleteProduct = async (id, dispatch) => {
+  dispatch(deleteProductStart());
+  try {
+    // const res = await userRequest.delete(`/products/${id}`);
+    console.log("ghoa")
+    dispatch(deleteProductSuccess(id));
+  } catch (err) {
+    dispatch(deleteProductFailure());
+  }
+};
