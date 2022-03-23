@@ -8,16 +8,25 @@ const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
+const morgan = require("morgan");
 const cors = require("cors");
 dotenv.config();
-
+//console.log(process.env.STRIPE_KEY)
 const option = { useNewUrlParser: true, useUnifiedTopology: true}
-
 mongoose.connect(process.env.MONGO_URL,option)
 	.then(()=> console.log('Base de datos conectada'))
 	.catch(error => console.log('Error db: ', error))
 
-app.use(express.json())
+//midleware
+// cors 
+const  corsOption = {
+	origin: '#',
+	optionsSuccessStatus:200
+}
+app.use(cors({corsOption}))
+app.use(express.json());
+app.use(morgan("common"));
+
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
