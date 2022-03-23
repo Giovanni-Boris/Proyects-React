@@ -1,16 +1,36 @@
 import "./featuredInfo.css";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward"
+import {useState,useEffect} from "react";
+import {userRequest} from "../../requestMethods";
 const FeaturedInfo = () => {
+  const [income, setIncome] = useState([]);
+  const [perc, setPerc] = useState(0)
+  useEffect(() => {
+    const getIcome = async ()=>{
+      try{
+        const res = await userRequest.get("orders/income");
+        setIncome(res.data)
+        console.log(res.data)
+        setPerc((res.data[1].total*100) / res.data[0].total - 100);
+      } catch{}
+    }
+    getIcome()
+  }, [])
 	return (
 		<div className="featured">
 			<div className="featuredItem">
 				<span className="featuredTitle">Revanue</span>
 				<div className="featuredMoneyContainer">
-					<span className="featuredMoney">$2,415</span>
+					<span className="featuredMoney">${income[1]?.total}</span>
 					<span className="featuredMoneyRate">
-						-11.4 <ArrowDownwardIcon className="featuredIcon negative"/>
-					</span>
+						{Math.floor(perc)}%{" "} 
+            {perc < 0 ?(
+              <ArrowDownwardIcon className="featuredIcon negative"/>
+					   ): (
+              <ArrowUpwardIcon className="featuredIcon"/>
+             )}
+          </span>
 				</div>
 				<span className="featuredSub">Campered to last month</span>
 			</div>

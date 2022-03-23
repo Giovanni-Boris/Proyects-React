@@ -28,7 +28,7 @@ const WidgetLg = () => {
 					<th className="widgetLgTh">Status</th>
 				</tr>
 				{orders.map(order=>(
-					<tr className="widgetLgTr">
+					<tr key={order._id} className="widgetLgTr">
 						<td className="widgetLgUser">
 				            <span className="widgetLgName">{order.userId}</span>
 						</td>
