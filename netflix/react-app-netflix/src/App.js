@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={user ? <Home/> : <Navigate to="/register"/>}/>
         <Route path="/register" element={!user ? <Register/> : <Register/>}/>
         <Route path="/login" element={!user ? <Login/> : <Navigate to="/"/>}/>
-        {user & (
+        {user && (
           <>
             <Route path="/movies" element={<Home type="movies"/>}/>
             <Route path="/series" element={<Home type="series"/>}/>
