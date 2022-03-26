@@ -18,7 +18,7 @@ const ListItem = ({index,item}) => {
 							"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyM2Y0YTAyZGUxZTI1YjI2MDIyMGU4ZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NDgzMTQ4ODgsImV4cCI6MTY0ODc0Njg4OH0.OghkecC5d2dtFa1c2gfzjQF5UGCTiX9gU4bYrK4O3Tk"
 					},
 				});
-				console.log(res.data);
+				//console.log(res.data);
 				setMovie(res.data);
 			} catch(err){
 				console.log(err)
