@@ -17,7 +17,7 @@ const WidgetSm = () => {
             <span className="widgetSmUserTitle">Software Engineer</span>
           </div>
           <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
+            <VisibilityIcon className="widgetSmIcon" />
             Display
           </button>
         </li>
@@ -32,7 +32,7 @@ const WidgetSm = () => {
             <span className="widgetSmUserTitle">Software Engineer</span>
           </div>
           <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
+            <VisibilityIcon className="widgetSmIcon" />
             Display
           </button>
         </li>
@@ -47,7 +47,7 @@ const WidgetSm = () => {
             <span className="widgetSmUserTitle">Software Engineer</span>
           </div>
           <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
+            <VisibilityIcon className="widgetSmIcon" />
             Display
           </button>
         </li>
@@ -62,7 +62,7 @@ const WidgetSm = () => {
             <span className="widgetSmUserTitle">Software Engineer</span>
           </div>
           <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
+            <VisibilityIcon className="widgetSmIcon" />
             Display
           </button>
         </li>
@@ -77,7 +77,7 @@ const WidgetSm = () => {
             <span className="widgetSmUserTitle">Software Engineer</span>
           </div>
           <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
+            <VisibilityIcon className="widgetSmIcon" />
             Display
           </button>
         </li>

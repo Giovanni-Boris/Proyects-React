@@ -10,7 +10,7 @@ const FeaturedInfo = () => {
 				<div className="featuredMoneyContainer">
 					<span className="featuredMoney">$2,415</span>
 					<span className="featuredMoneyRate">
-            -11.4 <ArrowDownward  className="featuredIcon negative"/>
+            -11.4 <ArrowDownwardIcon  className="featuredIcon negative"/>
           </span>
 				</div>
 				<span className="featuredSub">Campered to last month</span>
