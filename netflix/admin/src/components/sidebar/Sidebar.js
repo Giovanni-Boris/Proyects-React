@@ -3,7 +3,7 @@ import LineStyleIcon from "@mui/icons-material/LineStyle";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity"
-import StorefrontIcon from "@mui/icons-material/Storefront"
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline"
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
 import BarChartIcon from "@mui/icons-material/BarChart"
 import MailOutlineIcon from "@mui/icons-material/MailOutline"
@@ -44,10 +44,10 @@ const Sidebar = () => {
                 Users
               </li>
             </Link>
-            <Link to="products" className="link">
+            <Link to="movies" className="link">
               <li className="sidebarListItem">
-                <StorefrontIcon className="sidebarIcon" />
-                Products
+                <PlayCircleOutlineIcon className="sidebarIcon" />
+                Movies
               </li>
             </Link>
             <li className="sidebarListItem">

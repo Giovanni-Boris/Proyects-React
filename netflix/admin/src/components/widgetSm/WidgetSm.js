@@ -22,7 +22,7 @@ const WidgetSm = () => {
     }
     getNewUsers();
   }, [])
-  console.log(newUsers)
+  //console.log(newUsers)
 	return (
     <div className="widgetSm">
       <span className="widgetSmTitle">New Join Members</span>
