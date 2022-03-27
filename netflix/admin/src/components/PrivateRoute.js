@@ -1,10 +1,11 @@
 import { Navigate} from 'react-router-dom'
+import { AuthContext } from "../context/authContext/AuthContext";
+import { useContext } from 'react';
 
-//const auth = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.isAdmin ;
-const auth = true;
 const PrivateRoute = ({children}) => {
+  	const { user } = useContext(AuthContext);
 
-	return(auth ? children : <Navigate to="/login"/>);
+	return(user ? children : <Navigate to="/login"/>);
 }
 //simular autenticacion
 
