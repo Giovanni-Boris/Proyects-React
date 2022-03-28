@@ -9,6 +9,7 @@ import ProductList from "../productList/ProductList";
 import Product from "../product/Product";
 import NewProduct from "../newProduct/NewProduct";
 import ListList from "../listList/ListList";
+import List from "../list/List";
 import {
 	Routes,
 	Route, 
@@ -28,8 +29,8 @@ const Dashboard = () => {
 	              <Route path="/product/:movieId" element={<Product/>}/>
 	              <Route path="/newproduct" element={<NewProduct/>}/>
 	              <Route path="/lists" element={<ListList/>}/>
-	              {/*<Route path="/list/:movieId" element={<Product/>}/>
-	              	<Route path="/newList" element={<NewProduct/>}/>*/}
+	              <Route path="/list/:listId" element={<List/>}/>
+	              {/*<Route path="/newList" element={<NewProduct/>}/>*/}
               </Routes>  
             </div>
         </>

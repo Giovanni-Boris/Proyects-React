@@ -28,7 +28,7 @@ const ListList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/dashboard/product/" + params.row._id}>
+            <Link to={"/dashboard/list/" + params.row._id}>
               <button className="productListEdit">Edit</button>
             </Link>
             <DeleteOutlineIcon
