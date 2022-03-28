@@ -4,7 +4,7 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity"
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline"
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney"
+import ListIcon from "@mui/icons-material/List"
 import BarChartIcon from "@mui/icons-material/BarChart"
 import MailOutlineIcon from "@mui/icons-material/MailOutline"
 import DynamicFeedIcon from "@mui/icons-material/DynamicFeed"
@@ -50,10 +50,12 @@ const Sidebar = () => {
                 Movies
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoneyIcon className="sidebarIcon" />
-              Transactions
-            </li>
+            <Link to="lists" className="link">
+              <li className="sidebarListItem">
+                <ListIcon className="sidebarIcon" />
+                Lists
+              </li>
+            </Link>
             <li className="sidebarListItem">
               <BarChartIcon className="sidebarIcon" />
               Reports

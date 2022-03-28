@@ -1,25 +1,25 @@
 
-const movieReducer =(state,action)=>{
+const listReducer =(state,action)=>{
 	switch(action.type){
-		case "GET_MOVIES_START":
+		case "GET_LISTS_START":
 			return{
-				movies: [],
+				lists: [],
 				isFetching: true,
 				error: false,
 			}
-		case "GET_MOVIES_SUCCESS":
+		case "GET_LISTS_SUCCESS":
 			return{
-				movies: action.payload,
+				lists: action.payload,
 				isFetching: false,
 				error: false,
 			}
-		case "GET_MOVIES_FAILURE":
+		case "GET_LISTS_FAILURE":
 			return{
-				movies: [],
+				lists: [],
 				isFetching: false,
 				error: true,
 			}
-		case "CREATE_MOVIE_START":
+		/*case "CREATE_MOVIE_START":
 			return{
 				...state,
 				isFetching: true,
@@ -74,10 +74,10 @@ const movieReducer =(state,action)=>{
 				...state,
 				isFetching: false,
 				error: true,
-			}
+			}*/
 
 		default:
 			return state;
 	}
 }
-export default movieReducer;
+export default listReducer;
