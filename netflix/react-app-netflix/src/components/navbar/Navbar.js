@@ -15,7 +15,6 @@ const Navbar = () => {
 		setIsScrolled(window.pageYOffset === 0 ? false : true);
 		return () => (window.onscroll = null);
 	}
-	console.log(isScrolled)
 	return (
 		<div className={isScrolled ? "navbar scrolled" : "navbar"}>
 			<div className="container">
@@ -28,10 +27,10 @@ const Navbar = () => {
 			        	<span>Homepage</span>
 			        </Link>
 			        <Link to="/series" className="link">					
-			        	<span>Series</span>
+			        	<span className="navbarmainLinks">Series</span>
 					</Link>
 					<Link to="/movies" className="link">	
-			        	<span>Movies</span>
+			        	<span className="navbarmainLinks">Movies</span>
 			        </Link>
 			        <span>New and Popular</span>
 			        <span>My List</span>

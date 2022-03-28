@@ -1,10 +1,11 @@
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
-import { Link,useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./watch.scss"
-
+import { useContext } from "react";
+import { MovieContext } from "../../context/movieContext/MovieContext"; 
 const Watch = () => {
-	const location = useLocation();
-	const movie = location.movie
+	const {movie} = useContext(MovieContext);
+	console.log(movie);
 	return (
 		<div className="watch">
 			<Link to="/">

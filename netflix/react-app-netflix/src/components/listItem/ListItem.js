@@ -2,13 +2,15 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
-import { useState, useEffect} from "react";
+import { useState, useEffect, useContext} from "react";
 import "./listItem.scss"
 import axios from "axios";
 import { Link } from 'react-router-dom'
+import {MovieContext} from "../../context/movieContext/MovieContext";
 const ListItem = ({index,item}) => {
 	const [isHovered, setIsHovered] = useState(false);	
 	const [movie, setMovie] = useState({});
+	const {setMovie:setMovieContext} = useContext(MovieContext);
 	useEffect(() => {
 		const getMovie = async () => {
 			try{
@@ -27,7 +29,7 @@ const ListItem = ({index,item}) => {
 		getMovie();
 	}, [item]);
 	return (
-		<Link to={{pathname:"/watch" , movie: movie}}>
+		<Link onClick={()=>setMovieContext(movie)} to={{pathname:"/watch" }}>
 			<div 
 				className="listItem"
 				style={{left: isHovered && index * 225 - 50 + index * 2.5}}
