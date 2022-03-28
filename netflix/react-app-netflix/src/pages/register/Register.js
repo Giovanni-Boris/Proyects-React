@@ -1,18 +1,32 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./register.scss"
 
 const Register = () => {
 	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const navigate = useNavigate()
+
 	const emailRef = useRef();
 	const passwordRef = useRef();
-
+	const usernameRef = useRef();
 
 	const handleStart = () =>{
 		setEmail(emailRef.current.value);
 	}
-	const handleFinish = () =>{
+	const handleFinish = async (e) =>{
+		e.preventDefault();
 		setPassword(passwordRef.current.value);
+		setUsername(usernameRef.current.value);
+		console.log(username);
+		try{
+			await axios.post("auth/register", {email,username, password});
+			navigate("/login");
+		}catch(err){
+			console.log(err)
+		}
 	}
 	return (
 		<div className="register">
@@ -41,6 +55,7 @@ const Register = () => {
 			        </div>
 		        ):(
 	        		<form className="input">
+	        			<input type="text" placeholder="username" ref={usernameRef}/>
 			        	<input type="password" placeholder="password" ref={passwordRef}/>
 			        	<button className="registerButton" onClick={handleFinish}>
 			        		Start

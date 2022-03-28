@@ -4,8 +4,10 @@ import Watch from "./pages/watch/Watch";
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { useContext } from "react";
+import {AuthContext} from "./context/authContext/AuthContext";
 function App() {
-  const user = true;
+  const { user } = useContext(AuthContext);
   return (
     <Router>
       <Routes>
