@@ -12,7 +12,6 @@ const ListList = () => {
     getLists(dispatch);
   }, [dispatch])
 
-
   const handleDelete = (id) => {
     deleteList(id,dispatch);
   };

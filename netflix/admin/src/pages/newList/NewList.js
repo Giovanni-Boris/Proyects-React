@@ -3,12 +3,14 @@ import "./newList.css"
 import { ListContext }  from "../../context/listContext/ListContext";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import { getMovies } from "../../context/movieContext/apiCalls";
+import { createList } from "../../context/listContext/apiCalls";
+import { useNavigate } from "react-router-dom";
 
 const NewList = () => {
 	const [list, setList] = useState(null);
-
   const { dispatch } = useContext(ListContext);
   const { movies, dispatch: dispatchMovie } = useContext(MovieContext);
+  let navigate = useNavigate();
 
   useEffect(() => {
     getMovies(dispatchMovie);
@@ -26,21 +28,22 @@ const NewList = () => {
     let value = Array.from(e.target.selectedOptions, (option)=> option.value);
     setList({...list,[e.target.name]: value});
   }
-  console.log(list)
   const handleSubmit = (e) => {
     e.preventDefault();
+    createList(list, dispatch);
+    navigate("/dashboard/lists");
   }
 
 	return (
     <div className="newProduct">
-      <h1 className="addProductTitle">New Movie</h1>
+      <h1 className="addProductTitle">New List</h1>
       <form className="addProductForm">
         <div className="formLeft">
           <div className="addProductItem">
             <label>Title</label>
             <input 
               type="text" 
-              placeholder="John Wick" 
+              placeholder="Popular Movies" 
               name="title" 
               onChange={handleChange}
             />
@@ -49,7 +52,7 @@ const NewList = () => {
             <label>Genre</label>
             <input 
               type="text" 
-              placeholder="Genre" 
+              placeholder="action" 
               name="genre" 
               onChange={handleChange}
             />
@@ -57,7 +60,7 @@ const NewList = () => {
           <div className="addProductItem">
             <label>Type</label>
             <select name="type" onChange={handleChange}>
-                <option disabled>Type</option>
+                <option>Type</option>
                 <option value="movie">Movie</option>
                 <option value="series">Series</option>
             </select>
