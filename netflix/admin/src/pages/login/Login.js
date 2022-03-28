@@ -38,7 +38,7 @@ const Login = () => {
 					name="password"
 					onChange={handleChange}
 				/>
-				<button type="submit" className="loginButton">Login</button>
+				<button type="submit" className="loginButton" disabled={isFetching}>Login</button>
 			</form>
 		</div>
 	)

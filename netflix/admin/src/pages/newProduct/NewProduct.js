@@ -1,5 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import app from "../../firebase"
 import "./newProduct.css"
+import { createMovie } from "../../context/movieContext/apiCalls";
+import { MovieContext } from "../../context/movieContext/MovieContext";
+
 const NewProduct = () => {
 	const [movie, setMovie] = useState(null);
   const [img, setImg] = useState(null);
@@ -7,6 +17,8 @@ const NewProduct = () => {
   const [imgSm, setImgSm] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [video, setVideo] = useState(null);
+  const [uploaded, setUploaded] = useState(0);
+  const { dispatch } = useContext(MovieContext);
 
   const handleChange = (e)=>{
     let {value,name} = e.target;
@@ -15,7 +27,71 @@ const NewProduct = () => {
       [name]:value,
     })
   }
-  console.log(movie);
+  const upload = (items) => {
+    console.log(items);
+    const storage = getStorage(app);
+    items.forEach((item) => {
+      const fileName = new Date().getTime() + item.label + item.file.name;
+      const storageRef = ref(storage, `/items/${fileName}`);
+      const uploadTask = uploadBytesResumable(storageRef, item.file);
+      
+      // Register three observers:
+      // 1. 'state_changed' observer, called any time the state changes
+      // 2. Error observer, called on failure
+      // 3. Completion observer, called on successful completion
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+            default:
+          }
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+        },
+        () => {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+             setMovie((prev) => {
+              return { ...prev, [item.label]: downloadURL };
+            });
+            setUploaded((prev) => prev + 1);  
+          });
+        }
+      );
+
+
+    });
+  };
+
+  const handleUpload = (e) =>{
+    e.preventDefault();
+    upload([
+      {file: img, label: "img"},
+      {file: imgTitle, label: "imgTitle"},
+      {file: imgSm, label: "imgSm"},
+      {file: trailer, label: "trailer"},
+      {file: video, label: "video"},
+    ]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createMovie(movie, dispatch); 
+  }
+
 	return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Movie</h1>
@@ -124,7 +200,11 @@ const NewProduct = () => {
             onChange={(e) => setVideo(e.target.files[0])}
           />
         </div>
-        <button className="addProductButton">Create</button>
+        {uploaded === 5 ? (
+          <button className="addProductButton" onClick={handleSubmit}>Create</button>
+        ) : (
+          <button className="addProductButton" onClick={handleUpload}>Upload</button>
+        )}  
       </form>
     </div>
   );

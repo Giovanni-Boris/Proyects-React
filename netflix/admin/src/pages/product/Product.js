@@ -1,7 +1,5 @@
 import "./product.css"
 import { Link, useParams } from 'react-router-dom'
-import Chart from "../../components/chart/Chart";
-import {productData} from "../../dummyData";
 import PublishIcon from "@mui/icons-material/Publish"
 import {MovieContext}  from "../../context/movieContext/MovieContext";
 import { useContext } from "react";

@@ -1,6 +1,6 @@
 import "./widgetLg.css"
 
-import moment from 'moment'
+//import moment from 'moment'
 
 const Button = ({type}) => {
 	return <button className={"widgetLgButton "+type}>{type}</button>
