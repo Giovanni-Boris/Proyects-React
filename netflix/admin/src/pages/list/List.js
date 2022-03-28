@@ -1,6 +1,5 @@
 import "./list.css"
 import { Link, useParams } from 'react-router-dom'
-import PublishIcon from "@mui/icons-material/Publish"
 import { ListContext }  from "../../context/listContext/ListContext";
 import { useContext } from "react";
 
