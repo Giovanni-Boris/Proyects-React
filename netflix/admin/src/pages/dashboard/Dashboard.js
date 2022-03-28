@@ -8,7 +8,7 @@ import NewUser from "../newUser/NewUser";
 import ProductList from "../productList/ProductList";
 import Product from "../product/Product";
 import NewProduct from "../newProduct/NewProduct";
-
+import ListList from "../listList/ListList";
 import {
 	Routes,
 	Route, 
@@ -27,6 +27,9 @@ const Dashboard = () => {
 	              <Route path="/movies" element={<ProductList/>}/>
 	              <Route path="/product/:movieId" element={<Product/>}/>
 	              <Route path="/newproduct" element={<NewProduct/>}/>
+	              <Route path="/lists" element={<ListList/>}/>
+	              {/*<Route path="/list/:movieId" element={<Product/>}/>
+	              	<Route path="/newList" element={<NewProduct/>}/>*/}
               </Routes>  
             </div>
         </>
