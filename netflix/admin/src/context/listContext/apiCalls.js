@@ -3,6 +3,9 @@ import {
 	getListsStart,
 	getListsSuccess,
 	getListsFailure, 
+	deleteListStart,
+	deleteListSuccess,
+	deleteListFailure
 } from "./listActions";
 
 export const getLists = async (dispatch) =>{
@@ -19,8 +22,8 @@ export const getLists = async (dispatch) =>{
 		dispatch(getListsFailure());
 	}
 }
-
-/*//create
+/*
+//create
 export const createMovie = async (movie,dispatch) =>{
 	dispatch(createMovieStart());
 
@@ -34,24 +37,23 @@ export const createMovie = async (movie,dispatch) =>{
 	}catch(err){
 		dispatch(createMovieFailure());
 	}
-}
+}*/
 
 //delete
-export const deleteMovie = async (id,dispatch) =>{
-	dispatch(deleteMovieStart());
+export const deleteList = async (id,dispatch) =>{
+	dispatch(deleteListStart());
 
 	try{
-		await axios.delete("/movies/"+id, {
+		await axios.delete("/lists/"+id, {
 	      headers: {
 	        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
 	      },
 	    });
-	    dispatch(deleteMovieSuccess(id));
+	    dispatch(deleteListSuccess(id));
 	}catch(err){
-		dispatch(deleteMovieFailure());
+		dispatch(deleteListFailure());
 	}
 }
 
 
 
-*/

@@ -39,16 +39,16 @@ export const updateMovieSuccess = (movie) => ({
 
 export const updateMovieFailure = () => ({
   type: "UPDATE_MOVIE_FAILURE",
-});
+});*/
 //DELETE
-export const deleteMovieStart = () => ({
-  type: "DELETE_MOVIE_START",
+export const deleteListStart = () => ({
+  type: "DELETE_LIST_START",
 });
 
-export const deleteMovieSuccess = (id) => ({
-  type: "DELETE_MOVIE_SUCCESS",
+export const deleteListSuccess = (id) => ({
+  type: "DELETE_LIST_SUCCESS",
   payload: id,
 });
-export const deleteMovieFailure = () => ({
-  type: "DELETE_MOVIE_FAILURE",
-});*/
+export const deleteListFailure = () => ({
+  type: "DELETE_LIST_FAILURE",
+});

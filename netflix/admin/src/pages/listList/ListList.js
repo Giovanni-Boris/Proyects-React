@@ -4,7 +4,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { ListContext }  from "../../context/listContext/ListContext";
-import { getLists } from "../../context/listContext/apiCalls";
+import { getLists, deleteList } from "../../context/listContext/apiCalls";
 const ListList = () => {
   const {lists, dispatch} = useContext(ListContext);
 
@@ -14,7 +14,7 @@ const ListList = () => {
 
 
   const handleDelete = (id) => {
-    console.log(id)
+    deleteList(id,dispatch);
   };
   const columns = [
     { field: "_id", headerName: "ID", width: 250 },
