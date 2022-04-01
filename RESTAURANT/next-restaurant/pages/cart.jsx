@@ -7,7 +7,7 @@ const Cart = () => {
 			<div className={styles.left}>
 				<table className={styles.table}>
 					<thead className={styles.thead}>
-						<tr>
+						<tr className={styles.trTitle}>
 							<th>Product</th>
 							<th>Name</th>
 							<th>Extras</th>
@@ -17,7 +17,7 @@ const Cart = () => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr className={styles.tr}>
 							<td>
 								<div className={styles.imgContainer}>
 									<Image 
@@ -43,10 +43,10 @@ const Cart = () => {
 								<span className={styles.quantity}>2</span>
 							</td>
 							<td>
-								<span className={styles.totall}>$39.90</span>
+								<span className={styles.total}>$39.90</span>
 							</td>
 						</tr>
-						<tr>
+						<tr className={styles.tr}>
 							<td>
 								<div className={styles.imgContainer}>
 									<Image 
@@ -72,10 +72,10 @@ const Cart = () => {
 								<span className={styles.quantity}>2</span>
 							</td>
 							<td>
-								<span className={styles.totall}>$39.90</span>
+								<span className={styles.total}>$39.90</span>
 							</td>
 						</tr>
-						<tr>
+						<tr className={styles.tr}>
 							<td>
 								<div className={styles.imgContainer}>
 									<Image 
@@ -101,10 +101,10 @@ const Cart = () => {
 								<span className={styles.quantity}>2</span>
 							</td>
 							<td>
-								<span className={styles.totall}>$39.90</span>
+								<span className={styles.total}>$39.90</span>
 							</td>
 						</tr>
-						<tr>
+						<tr className={styles.tr}>
 							<td>
 								<div className={styles.imgContainer}>
 									<Image 
@@ -130,10 +130,10 @@ const Cart = () => {
 								<span className={styles.quantity}>2</span>
 							</td>
 							<td>
-								<span className={styles.totall}>$39.90</span>
+								<span className={styles.total}>$39.90</span>
 							</td>
 						</tr>
-						<tr>
+						<tr className={styles.tr}>
 							<td>
 								<div className={styles.imgContainer}>
 									<Image 
@@ -159,7 +159,7 @@ const Cart = () => {
 								<span className={styles.quantity}>2</span>
 							</td>
 							<td>
-								<span className={styles.totall}>$39.90</span>
+								<span className={styles.total}>$39.90</span>
 							</td>
 						</tr>
 					</tbody>
