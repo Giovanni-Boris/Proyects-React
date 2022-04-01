@@ -32,7 +32,7 @@ const Cart = () => {
 								<span className={styles.name}>CORALIZO</span>
 							</td>
 							<td>
-								<span className={styles.extrax}>
+								<span className={styles.extras}>
 									Double ingredient, spicy sauce
 								</span>
 							</td>
