@@ -10,11 +10,11 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import { reset } from "../redux/cartSlice";
-
+import OrderDetail from "../components/OrderDetail";
 const Cart = () => {
-	//const dispatch = useDispatch();
 	const [open, setOpen] = useState(false);
 	const cart  = useSelector(state => state.cart)
+	const [cash, setCash] = useState(false);
 	const amount = cart.total;
 	const currency = "USD";
 	const style = {"layout":"vertical"};
@@ -147,44 +147,45 @@ const Cart = () => {
 				</table>
 			</div>
 			<div className={styles.right}>
-	        	<div className={styles.wrapper}>
-	          		<h2 className={styles.title}>CART TOTAL</h2>
-		          	<div className={styles.totalText}>
-		            	<b className={styles.totalTextTitle}>Subtotal:</b>${cart.total}
-		          	</div>
-		          	<div className={styles.totalText}>
-		            	<b className={styles.totalTextTitle}>Discount:</b>$0.00
-		          	</div>
-		          	<div className={styles.totalText}>
-		            	<b className={styles.totalTextTitle}>Total:</b>${cart.total}
-		          	</div>
- 	        		{open ? (
- 	        			<div className={styles.paymentMethods}>
- 	        				<button
-				                className={styles.payButton}
-				                
-				          >
-										CASH ON DELIVERY
-				          </button>
-		        			<PayPalScriptProvider
-				                options={{
-				                  "client-id":
-				                  	"ARifUjrmk1nVvoPEXXU439Uwhn81VEv404k8WW3hbiGLtjD-WLp_xAI2I3mo5790o4qQlGmXIzgAuJp8",
-					                components: "buttons",
-					                currency: "USD",
-					                "disable-funding": "credit,card,p24",
-				                }}
-				            	>
-			                	<ButtonWrapper currency={currency} showSpinner={false} />
-			            	</PayPalScriptProvider>
-			            </div>
-	        		) : (
-					  	<button onClick={() => setOpen(true)} className={styles.button}>
-					        CHECKOUT NOW!
-					   	</button>					
-            		)}
-	        	</div>
-	      	</div>
+        	<div className={styles.wrapper}>
+          		<h2 className={styles.title}>CART TOTAL</h2>
+	          	<div className={styles.totalText}>
+	            	<b className={styles.totalTextTitle}>Subtotal:</b>${cart.total}
+	          	</div>
+	          	<div className={styles.totalText}>
+	            	<b className={styles.totalTextTitle}>Discount:</b>$0.00
+	          	</div>
+	          	<div className={styles.totalText}>
+	            	<b className={styles.totalTextTitle}>Total:</b>${cart.total}
+	          	</div>
+	        		{open ? (
+	        			<div className={styles.paymentMethods}>
+	        				<button
+			            className={styles.payButton}
+			            onClick={()=>setCash(true)}    
+			          >
+									CASH ON DELIVERY
+			          </button>
+	        			<PayPalScriptProvider
+			                options={{
+			                  "client-id":
+			                  	"ARifUjrmk1nVvoPEXXU439Uwhn81VEv404k8WW3hbiGLtjD-WLp_xAI2I3mo5790o4qQlGmXIzgAuJp8",
+				                components: "buttons",
+				                currency: "USD",
+				                "disable-funding": "credit,card,p24",
+			                }}
+			            	>
+		                	<ButtonWrapper currency={currency} showSpinner={false} />
+		            	</PayPalScriptProvider>
+		            </div>
+        		) : (
+				  	<button onClick={() => setOpen(true)} className={styles.button}>
+				        CHECKOUT NOW!
+				   	</button>					
+          		)}
+        	</div>	
+	      </div>
+	      {cash && <OrderDetail total={cart.total} createOrder={createOrder}/> }
 		</div>
 	)
 }
