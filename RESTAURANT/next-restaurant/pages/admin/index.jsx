@@ -5,6 +5,8 @@ import { useState } from "react";
 const Index = ({ orders, products }) => {
 	const [pizzaList, setPizzaList] = useState(products);
 	const [orderList, setOrderList] = useState(orders);
+	const status = ["preparing", "on the way", "delivered"];
+
 	const handleDelete = async (id) => {
 		try{
 			const res = await axios.delete("http://localhost:3000/api/products/"+id)
@@ -13,6 +15,23 @@ const Index = ({ orders, products }) => {
 			console.log(err)
 		}
 		
+	};
+
+	const handleStatus = async (id) => {
+		const item = orderList.filter(order=>order._id===id)[0];
+		const currenStatus = item.status
+		try{
+			const res = await axios.put("http://localhost:3000/api/orders/" + id,{
+				status: currenStatus + 1 
+			});
+			setOrderList([
+				res.data,
+				...orderList.filter(order=>order._id !== id),
+			]);
+
+		}catch(err){
+			console.log(err)
+		}
 	}
 	return (
 		<div className={styles.container}>
@@ -71,18 +90,24 @@ const Index = ({ orders, products }) => {
 			            </tr>
 			        </thead>
 			        <tbody>
-			            <tr className={styles.trTitle}>
-			              <td>
-			              	{"23213213213213123213".slice(0, 5)}...
-			              </td>
-			              <td>John Doe</td>
-			              <td>$50</td>
-			              <td>paid</td>
-			              <td>preparing</td>
-			              <td>
-			              	<button>Next Stage</button>
-			              </td>
-			            </tr>
+			        	{orderList.map((order) => (
+				            <tr key={order._id} className={styles.trTitle}>
+				              <td>
+				              	{order._id.slice(0, 5)}...
+				              </td>
+				              <td>{order.customer}</td>
+				              <td>${order.total}</td>
+				              <td>
+				              	{order.method === 0 ? (<span>cash</span>) : (<span>paid</span>)}
+				              </td>
+				              <td>{status[order.status]}</td>
+				              <td>
+				              	<button
+				              		onClick={()=>handleStatus(order._id)}
+				              	>Next Stage</button>
+				              </td>
+				            </tr>
+				        ))}
 			        </tbody>
 				</table>
 			</div>
